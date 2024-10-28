@@ -40,9 +40,3 @@ resource "aws_route_table" "main1" {
     Name = "my-route-table-nat"  # 라우트 테이블의 태그 설정
   }
 }
-
-# resource "aws_route" "nat" {
-#   route_table_id = aws_route_table.main1.id  # 라우트 테이블 ID 설정
-#   destination_cidr_block = "0.0.0.0/0"  # 모든 트래픽을 허용하는 CIDR 블록 설정
-#   network_interface_id = var.nat_interface_network_interface_id  # 네트워크 인터페이스 ID 설정
-# }

@@ -25,10 +25,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/김승현/Documents/oCam/인프런 강의/아키텍처와 함께하는 Terraform 기초편!/새 폴더/code-module"
+    "last_opened_file_path": "C:/Users/김승현/Documents/oCam/인프런 강의/아키텍처와 함께하는 Terraform 기초편!/code-module1"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\김승현\Documents\oCam\인프런 강의\아키텍처와 함께하는 Terraform 기초편!\code-module1" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\김승현\Documents\oCam\인프런 강의\아키텍처와 함께하는 Terraform 기초편!\code-module\modules" />
     </key>
@@ -43,5 +53,16 @@
       <updated>1729609539580</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
