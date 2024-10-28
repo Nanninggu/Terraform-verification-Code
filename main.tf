@@ -43,27 +43,31 @@ module "ec2" {
 }
 
 module "s3" {
-  source      = "./modules/s3"
-  bucket_name = "my-unique-bucket-name-sionkim"
-  acl         = "private"
+  # S3 모듈을 정의합니다.
+  source = "./modules/s3"  # 모듈 소스 경로를 설정합니다.
+  bucket_name = "my-unique-bucket-name-sionkim"  # S3 버킷 이름을 설정합니다.
+  acl = "private"  # S3 버킷의 접근 제어 목록(ACL)을 private으로 설정합니다.
 }
 
 module "rds" {
-  source     = "./modules/rds"
-  db_name    = "mydatabase"
-  username   = "postgres"
-  password   = "test1234"
-  vpc_security_group_ids = [module.security-group.security_group_id]
-  subnet_ids = module.subnet.private_subnet_ids
+  # RDS 모듈을 정의합니다.
+  source = "./modules/rds"  # 모듈 소스 경로를 설정합니다.
+  db_name = "mydatabase"  # 데이터베이스 이름을 설정합니다.
+  username = "postgres"  # 데이터베이스 사용자 이름을 설정합니다.
+  password = "test1234"  # 데이터베이스 비밀번호를 설정합니다.
+  vpc_security_group_ids = [module.security-group.security_group_id]  # VPC 보안 그룹 ID를 설정합니다.
+  subnet_ids = module.subnet.private_subnet_ids  # 서브넷 ID를 설정합니다.
 }
 
 module "alb" {
-  source     = "./modules/alb"
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.subnet.public_subnet_ids
-  security_group_ids = [module.security-group.security_group_id]
+  # ALB 모듈을 정의합니다.
+  source = "./modules/alb"  # 모듈 소스 경로를 설정합니다.
+  vpc_id = module.vpc.vpc_id  # VPC ID를 설정합니다.
+  subnet_ids = module.subnet.public_subnet_ids  # 서브넷 ID를 설정합니다.
+  security_group_ids = [module.security-group.security_group_id]  # 보안 그룹 ID를 설정합니다.
   target_instance_ids = [
-    module.ec2.web1_id,
-    module.ec2.web2_id
+    # 대상 인스턴스 ID를 설정합니다.
+    module.ec2.web1_id, # 첫 번째 웹 인스턴스 ID를 설정합니다.
+    module.ec2.web2_id  # 두 번째 웹 인스턴스 ID를 설정합니다.
   ]
 }
