@@ -22,6 +22,7 @@ module "subnet" {
   source = "./modules/subnet" # 서브넷 모듈 소스 경로
   vpc_id = module.vpc.vpc_id # VPC 모듈에서 VPC ID 가져오기
   route_table_id = module.vpc.route_table_id # VPC 모듈에서 라우트 테이블 ID 가져오기
+  route_table_id1 = module.vpc.route_table_id1 # VPC 모듈에서 NAT 인스턴스 라우트 테이블 ID 가져오기 (추가)
 }
 
 module "security-group" {
