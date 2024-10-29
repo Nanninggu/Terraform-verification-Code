@@ -5,3 +5,8 @@ output "public_subnet_ids" {
 output "private_subnet_ids" {
   value = [aws_subnet.private1.id, aws_subnet.private2.id]  # 프라이빗 서브넷 ID 출력
 }
+
+// 추가
+output "subnet_ids" {
+  value = [aws_subnet.private1.id, aws_subnet.private2.id]  # 서브넷 ID 출력
+}

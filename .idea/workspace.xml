@@ -17,29 +17,34 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2nnWu12wNEa5TeYCS7Pjn0ie62l" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/김승현/Documents/oCam/인프런 강의/아키텍처와 함께하는 Terraform 기초편!/code-module1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/김승현/Documents/oCam/인프런 강의/아키텍처와 함께하는 Terraform 기초편!/code-module1&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\김승현\Documents\oCam\인프런 강의\아키텍처와 함께하는 Terraform 기초편!\code-module1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\김승현\Documents\oCam\인프런 강의\아키텍처와 함께하는 Terraform 기초편!\code-module1\modules\autoscaling" />
       <recent name="C:\Users\김승현\Documents\oCam\인프런 강의\아키텍처와 함께하는 Terraform 기초편!\code-module\modules" />
     </key>
   </component>
