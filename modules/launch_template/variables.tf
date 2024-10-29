@@ -7,3 +7,8 @@ variable "instance_type" {
   description = "The instance type for the launch template"
   type        = string
 }
+
+variable "key_name" {
+  description = "The key pair name for the launch template"
+  type        = string
+}

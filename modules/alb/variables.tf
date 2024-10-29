@@ -17,3 +17,4 @@ variable "target_instance_ids" {
   description = "The instance IDs to register with the target group"
   type = list(string)
 }
+

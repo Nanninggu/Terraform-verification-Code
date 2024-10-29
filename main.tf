@@ -14,20 +14,20 @@ provider "aws" {
 
 # vpc 모듈 생성
 module "vpc" {
-  source = "./modules/vpc" # VPC 모듈 소스 경로
+  source = "./modules/vpc"                               # VPC 모듈 소스 경로
   nat_interface_network_interface_id = module.ec2.nat_interface_network_interface_id # EC2 모듈에서 NAT 인터페이스 ID 가져오기
 }
 
 module "subnet" {
-  source = "./modules/subnet" # 서브넷 모듈 소스 경로
-  vpc_id = module.vpc.vpc_id # VPC 모듈에서 VPC ID 가져오기
-  route_table_id = module.vpc.route_table_id # VPC 모듈에서 라우트 테이블 ID 가져오기
+  source = "./modules/subnet"         # 서브넷 모듈 소스 경로
+  vpc_id = module.vpc.vpc_id          # VPC 모듈에서 VPC ID 가져오기
+  route_table_id = module.vpc.route_table_id  # VPC 모듈에서 라우트 테이블 ID 가져오기
   route_table_id1 = module.vpc.route_table_id1 # VPC 모듈에서 NAT 인스턴스 라우트 테이블 ID 가져오기 (추가)
 }
 
 module "security-group" {
   source = "./modules/security-group" # 보안 그룹 모듈 소스 경로
-  vpc_id = module.vpc.vpc_id # VPC 모듈에서 VPC ID 가져오기
+  vpc_id = module.vpc.vpc_id          # VPC 모듈에서 VPC ID 가져오기
 }
 
 module "key_pair" {
@@ -35,52 +35,54 @@ module "key_pair" {
 }
 
 module "ec2" {
-  source = "./modules/ec2" # EC2 모듈 소스 경로
+  source = "./modules/ec2"                         # EC2 모듈 소스 경로
   security_group_id = module.security-group.security_group_id # 보안 그룹 모듈에서 보안 그룹 ID 가져오기
-  public_subnet_ids = module.subnet.public_subnet_ids # 서브넷 모듈에서 퍼블릭 서브넷 ID 가져오기
-  private_subnet_ids = module.subnet.private_subnet_ids # 서브넷 모듈에서 프라이빗 서브넷 ID 가져오기
-  key_name = module.key_pair.key_name # 키 페어 이름 설정
+  public_subnet_ids = module.subnet.public_subnet_ids         # 서브넷 모듈에서 퍼블릭 서브넷 ID 가져오기
+  private_subnet_ids = module.subnet.private_subnet_ids        # 서브넷 모듈에서 프라이빗 서브넷 ID 가져오기
+  key_name = module.key_pair.key_name                # 키 페어 이름 설정
 }
 
-# module "s3" {
-#   # S3 모듈을 정의합니다.
-#   source = "./modules/s3"  # 모듈 소스 경로를 설정합니다.
-#   bucket_name = "my-unique-bucket-name-sionkim"  # S3 버킷 이름을 설정합니다.
-#   acl = "private"  # S3 버킷의 접근 제어 목록(ACL)을 private으로 설정합니다.
-# }
-#
-# module "rds" {
-#   # RDS 모듈을 정의합니다.
-#   source = "./modules/rds"  # 모듈 소스 경로를 설정합니다.
-#   db_name = "mydatabase"  # 데이터베이스 이름을 설정합니다.
-#   username = "postgres"  # 데이터베이스 사용자 이름을 설정합니다.
-#   password = "test1234"  # 데이터베이스 비밀번호를 설정합니다.
-#   vpc_security_group_ids = [module.security-group.security_group_id]  # VPC 보안 그룹 ID를 설정합니다.
-#   subnet_ids = module.subnet.private_subnet_ids  # 서브넷 ID를 설정합니다.
-# }
-#
-# module "alb" {
-#   # ALB 모듈을 정의합니다.
-#   source = "./modules/alb"  # 모듈 소스 경로를 설정합니다.
-#   vpc_id = module.vpc.vpc_id  # VPC ID를 설정합니다.
-#   subnet_ids = module.subnet.public_subnet_ids  # 서브넷 ID를 설정합니다.
-#   security_group_ids = [module.security-group.security_group_id]  # 보안 그룹 ID를 설정합니다.
-#   target_instance_ids = [
-#     # 대상 인스턴스 ID를 설정합니다.
-#     module.ec2.web1_id, # 첫 번째 웹 인스턴스 ID를 설정합니다.
-#     module.ec2.web2_id  # 두 번째 웹 인스턴스 ID를 설정합니다.
-#   ]
-# }
+module "s3" {
+  # S3 모듈을 정의합니다.
+  source = "./modules/s3"                  # 모듈 소스 경로를 설정합니다.
+  bucket_name = "my-unique-bucket-name-sionkim" # S3 버킷 이름을 설정합니다.
+  acl = "private"                       # S3 버킷의 접근 제어 목록(ACL)을 private으로 설정합니다.
+}
+
+module "rds" {
+  # RDS 모듈을 정의합니다.
+  source = "./modules/rds"                           # 모듈 소스 경로를 설정합니다.
+  db_name = "mydatabase"                              # 데이터베이스 이름을 설정합니다.
+  username = "postgres"                                # 데이터베이스 사용자 이름을 설정합니다.
+  password = "test1234"                                # 데이터베이스 비밀번호를 설정합니다.
+  vpc_security_group_ids = [module.security-group.security_group_id] # VPC 보안 그룹 ID를 설정합니다.
+  subnet_ids = module.subnet.private_subnet_ids          # 서브넷 ID를 설정합니다.
+}
+
+module "alb" {
+  # ALB 모듈을 정의합니다.
+  source = "./modules/alb"                           # 모듈 소스 경로를 설정합니다.
+  vpc_id = module.vpc.vpc_id                         # VPC ID를 설정합니다.
+  subnet_ids = module.subnet.public_subnet_ids           # 서브넷 ID를 설정합니다.
+  security_group_ids = [module.security-group.security_group_id] # 보안 그룹 ID를 설정합니다.
+  target_instance_ids = [
+    # 대상 인스턴스 ID를 설정합니다.
+    module.ec2.web1_id, # 첫 번째 웹 인스턴스 ID를 설정합니다.
+    module.ec2.web2_id  # 두 번째 웹 인스턴스 ID를 설정합니다.
+  ]
+}
 
 # // 추가
 module "autoscaling" {
   source                  = "./modules/autoscaling"
   subnet_ids              = module.subnet.private_subnet_ids
   web1_launch_template_id = module.launch_template.web1_launch_template_id
+  aws_lb_target_group     = module.alb.aws_lb_target_group
 }
 
 module "launch_template" {
-  source = "./modules/launch_template"  # 모듈 소스 경로를 설정합니다.
-  source_instance_id = module.ec2.web1_id  # 웹 서버 1의 인스턴스 ID를 설정합니다.
-  instance_type = "t2.micro"  # 인스턴스 유형을 설정합니다.
+  source = "./modules/launch_template" # 모듈 소스 경로를 설정합니다.
+  source_instance_id = module.ec2.web1_id          # 웹 서버 1의 인스턴스 ID를 설정합니다.
+  instance_type = "t2.micro"                  # 인스턴스 유형을 설정합니다.
+  key_name = module.key_pair.key_name     # 키 페어 이름을 설정합니다.
 }
